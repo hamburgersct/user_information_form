@@ -1,10 +1,10 @@
 const URL = "https://frontend-take-home.fetchrewards.com/form";
-const STATUS_OK = 201;
 
 // GET request
 async function getData(url) {
   const res = await fetch(url, { method: "GET" });
-  return res.json();
+  // check network error
+  return res;
 }
 
 // POST request
@@ -19,4 +19,4 @@ async function postData(url, data) {
   return res;
 }
 
-export { URL, STATUS_OK, getData, postData };
+export { URL, getData, postData };

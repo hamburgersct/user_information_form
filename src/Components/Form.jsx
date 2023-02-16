@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { getData, postData, URL, STATUS_OK } from "../utils/api";
+import { getData, postData, URL } from "../utils/api";
 import isEmail from "validator/lib/isEmail";
 import isStrongPassword from "validator/lib/isStrongPassword";
 
@@ -63,10 +63,17 @@ const Form = () => {
 
   // only triggered when the first rendering
   useEffect(() => {
-    getData(URL).then((data) => {
-      setOccupationList(data.occupations);
-      setStateList(data.states);
-    });
+    getData(URL)
+      .then((res) => res.json())
+      .then((data) => {
+        setOccupationList(data.occupations);
+        setStateList(data.states);
+      })
+      .catch((err) => {
+        const errorMessage = `Error getting data: ${err.message}`;
+        alert(errorMessage);
+        console.error(errorMessage);
+      });
   }, []);
 
   // click handlers
@@ -149,9 +156,19 @@ const Form = () => {
       occupation: userOccupation,
       state: userState,
     };
-    postData(URL, userInfo).then((response) => {
-      response.status === STATUS_OK && setShowSnackBar(true);
-    });
+    postData(URL, userInfo)
+      .then((response) => {
+        if (response.ok) {
+          setShowSnackBar(true);
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .catch((err) => {
+        const errorMessage = `Error posting data: ${err.message}`;
+        alert(errorMessage);
+        console.error(errorMessage);
+      });
   };
 
   return (
