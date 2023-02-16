@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-.form {
-    
-}
-
 .form-title {
     display: flex;
     flex-direction: row;
