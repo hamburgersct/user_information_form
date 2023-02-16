@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form {
+    
+}
+
+.form-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 50px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px auto;
+    width: 50%;
+    height: 70px;
+    /* background-color: aqua; */
+}
+
+.form-row.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 30px auto;
+    width: 50%;
+}
+
