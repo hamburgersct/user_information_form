@@ -11,6 +11,7 @@ import {
   InputAdornment,
   IconButton,
   Snackbar,
+  FormHelperText,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -278,6 +279,9 @@ const Form = () => {
                   </MenuItem>
                 ))}
               </Select>
+              {!isOccupationValid && (
+                <FormHelperText>Please select your occupation</FormHelperText>
+              )}
             </FormControl>
           </div>
           <div className="form-row">
@@ -297,6 +301,9 @@ const Form = () => {
                   >{`${state.name} (${state.abbreviation})`}</MenuItem>
                 ))}
               </Select>
+              {!isStateValid && (
+                <FormHelperText>Please select your state</FormHelperText>
+              )}
             </FormControl>
           </div>
           <div className="form-row form-buttons">
