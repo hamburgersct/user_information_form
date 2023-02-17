@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# User Information Form App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Site Hosting
 
-In the project directory, you can run:
+This web app is hosted on Netlify: https://simple-user-info-form.netlify.app/
 
 ### `npm start`
 
