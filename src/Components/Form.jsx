@@ -62,6 +62,8 @@ const Form = () => {
     );
   };
 
+  const btnDisabled = !canSubmit();
+
   // only triggered when the first rendering
   useEffect(() => {
     getData(URL)
@@ -184,19 +186,21 @@ const Form = () => {
               required
               error={!isFnameValid}
               helperText={isFnameValid ? "" : "First name is required"}
-              id="fname"
+              id="fname-input"
               value={fname}
               label="First Name"
               onChange={(e) => handleChangeInput("fname", e)}
+              inputProps={{ "data-testid": "fname-input" }}
             />
             <TextField
               required
               error={!isLnameValid}
               value={lname}
               helperText={isLnameValid ? "" : "Last name is required"}
-              id="lname"
+              id="lname-input"
               label="Last Name"
               onChange={(e) => handleChangeInput("lname", e)}
+              inputProps={{ "data-testid": "lname-input" }}
             />
           </div>
           <div className="form-row">
@@ -204,11 +208,12 @@ const Form = () => {
               required
               error={!isEmailValid}
               helperText={isEmailValid ? "" : "Email is invalid"}
-              id="email"
+              id="email-input"
               value={email}
               label="Email Address"
               type="email"
               onChange={(e) => handleChangeInput("email", e)}
+              inputProps={{ "data-testid": "email-input" }}
             />
           </div>
           <div className="form-row">
@@ -216,7 +221,7 @@ const Form = () => {
               required
               error={!isPasswordValid}
               helperText={isPasswordValid ? "" : "Please use a strong password"}
-              id="password"
+              id="password-input"
               label="Password"
               value={password}
               type={showPassword ? "text" : "password"}
@@ -234,6 +239,7 @@ const Form = () => {
                     </IconButton>
                   </InputAdornment>
                 ),
+                inputProps: { "data-testid": "password-input" },
               }}
             />
           </div>
@@ -242,7 +248,7 @@ const Form = () => {
               required
               error={!isConfirmPasswordValid}
               helperText={isConfirmPasswordValid ? "" : "Password do not match"}
-              id="comfirmPassword"
+              id="comfirmPassword-input"
               label="Confirm Password"
               value={confirmPassword}
               type={showPassword ? "text" : "password"}
@@ -260,6 +266,7 @@ const Form = () => {
                     </IconButton>
                   </InputAdornment>
                 ),
+                inputProps: { "data-testid": "confirmPassword-input" },
               }}
             />
           </div>
@@ -268,10 +275,11 @@ const Form = () => {
               <InputLabel id="occupation-label">Occupation</InputLabel>
               <Select
                 labelId="occupation-label"
-                id="occupation"
+                id="occupation-selector"
                 value={userOccupation}
                 label="Occupation"
                 onChange={(e) => handleChangeInput("occupation", e)}
+                inputProps={{ "data-testid": "occupation-selector" }}
               >
                 {occupationList.map((occupation, idx) => (
                   <MenuItem key={idx} value={occupation}>
@@ -289,10 +297,11 @@ const Form = () => {
               <InputLabel id="state-label">State</InputLabel>
               <Select
                 labelId="state-label"
-                id="state"
+                id="state-selector"
                 value={userState}
                 label="State"
                 onChange={(e) => handleChangeInput("state", e)}
+                inputProps={{ "data-testid": "state-selector" }}
               >
                 {stateList.map((state) => (
                   <MenuItem
@@ -318,9 +327,10 @@ const Form = () => {
             <Button
               variant="contained"
               size="large"
-              disabled={!canSubmit()}
+              disabled={btnDisabled}
               onClick={handleClickSubmit}
               className="button"
+              data-testid="submit-button"
             >
               Submit
             </Button>
