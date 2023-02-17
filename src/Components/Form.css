@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 .form-title {
     display: flex;
     flex-direction: row;
@@ -32,6 +31,10 @@
 
 /* For screens narrower than 768px */
 @media screen and (max-width: 768px) {
+    .form {
+        margin-top: 5vh;
+    }
+
     .MuiBox-root {
         display: flex;
         flex-direction: row;
@@ -80,12 +83,16 @@
   
   /* For screens wider than 768px */
 @media screen and (min-width: 767px) {
+    .form {
+        margin-top: 10vh;
+    }
+
     .form-title {
-        margin: 20px auto;
+        margin: 40px auto;
     }
     
     .form-row {
-        width: 80%;
+        width: 60%;
         height: 70px;
         margin-bottom: 15px;
     }
