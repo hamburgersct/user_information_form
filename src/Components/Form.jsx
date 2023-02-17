@@ -178,7 +178,7 @@ const Form = () => {
       </div>
       <Box component="form" noValidate autoComplete="off">
         <div className="form-body">
-          <div className="form-row">
+          <div className="form-row" id="name-row">
             <TextField
               required
               error={!isFnameValid}
@@ -186,7 +186,6 @@ const Form = () => {
               id="fname"
               value={fname}
               label="First Name"
-              sx={{ width: "35%" }}
               onChange={(e) => handleChangeInput("fname", e)}
             />
             <TextField
@@ -196,7 +195,6 @@ const Form = () => {
               helperText={isLnameValid ? "" : "Last name is required"}
               id="lname"
               label="Last Name"
-              sx={{ width: "35%" }}
               onChange={(e) => handleChangeInput("lname", e)}
             />
           </div>
@@ -209,7 +207,6 @@ const Form = () => {
               value={email}
               label="Email Address"
               type="email"
-              sx={{ width: "85%" }}
               onChange={(e) => handleChangeInput("email", e)}
             />
           </div>
@@ -223,7 +220,6 @@ const Form = () => {
               value={password}
               type={showPassword ? "text" : "password"}
               autoComplete="current-password"
-              sx={{ width: "85%" }}
               onChange={(e) => handleChangeInput("password", e)}
               InputProps={{
                 endAdornment: (
@@ -250,7 +246,6 @@ const Form = () => {
               value={confirmPassword}
               type={showPassword ? "text" : "password"}
               autoComplete="current-password"
-              sx={{ width: "85%" }}
               onChange={(e) => handleChangeInput("confirmPassword", e)}
               InputProps={{
                 endAdornment: (
@@ -268,11 +263,7 @@ const Form = () => {
             />
           </div>
           <div className="form-row">
-            <FormControl
-              required
-              sx={{ width: "85%" }}
-              error={!isOccupationValid}
-            >
+            <FormControl required error={!isOccupationValid}>
               <InputLabel id="occupation-label">Occupation</InputLabel>
               <Select
                 labelId="occupation-label"
@@ -290,7 +281,7 @@ const Form = () => {
             </FormControl>
           </div>
           <div className="form-row">
-            <FormControl required sx={{ width: "85%" }} error={!isStateValid}>
+            <FormControl required error={!isStateValid}>
               <InputLabel id="state-label">State</InputLabel>
               <Select
                 labelId="state-label"
@@ -309,7 +300,12 @@ const Form = () => {
             </FormControl>
           </div>
           <div className="form-row form-buttons">
-            <Button variant="outlined" size="large" onClick={handleClickClear}>
+            <Button
+              variant="outlined"
+              size="large"
+              onClick={handleClickClear}
+              className="button"
+            >
               Clear
             </Button>
             <Button
@@ -317,6 +313,7 @@ const Form = () => {
               size="large"
               disabled={!canSubmit()}
               onClick={handleClickSubmit}
+              className="button"
             >
               Submit
             </Button>
